@@ -1,0 +1,11 @@
+# Python virtual environment
+venv/
+.venv/
+
+# Environment files
+.env
+.env.*
+
+# Other files
+ideas.md
+*.csv
