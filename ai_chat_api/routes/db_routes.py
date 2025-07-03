@@ -12,6 +12,8 @@ db_bp = Blueprint('db', __name__)
 CSV_PATH = os.path.join(os.path.dirname(os.path.abspath(
     __file__)), '..', '..', 'sample_caso_ai_engineer.csv')
 
+BOOL_COLUMNS = ['bluetooth', 'car_play']
+
 
 @db_bp.route('/cars', methods=['GET'])
 def get_cars():
@@ -42,7 +44,7 @@ def get_cars():
     print(f"CSV file loaded successfully with {len(df)} records.")
 
     # Convert columns to appropriate types
-    for bool_col in ['bluetooth', 'car_play']:
+    for bool_col in BOOL_COLUMNS:
         if bool_col in df.columns:
             df[bool_col] = df[bool_col].apply(
                 lambda x: str(x).strip().lower(
@@ -68,7 +70,7 @@ def get_cars():
             continue  # Skip this filter instead of returning error
 
         # Handle boolean fields specifically
-        if field in ['bluetooth', 'car_play']:
+        if field in BOOL_COLUMNS:
             if value is True:
                 df = df[df[alias] == True]
             elif value is False:
@@ -86,7 +88,7 @@ def get_cars():
         print(f"After filtering by {field}: {len(df)} records remaining")
 
     # Handle missing boolean values in the output
-    for bool_col in ['bluetooth', 'car_play']:
+    for bool_col in BOOL_COLUMNS:
         if bool_col in df.columns:
             df[bool_col] = df[bool_col].fillna(False)
 
@@ -97,7 +99,7 @@ def get_cars():
         row_str_keys = {str(k): v for k, v in row.items()}
 
         # Convert boolean fields from string to boolean
-        for bool_field in ['bluetooth', 'car_play']:
+        for bool_field in BOOL_COLUMNS:
             if bool_field in row_str_keys and isinstance(row_str_keys[bool_field], str):
                 row_str_keys[bool_field] = row_str_keys[bool_field].strip(
                 ).lower() == "sí"
