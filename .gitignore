@@ -9,3 +9,9 @@ venv/
 # Other files
 ideas.md
 *.csv
+
+# Personal files
+sessions/
+
+# cache
+**/__pycache__/

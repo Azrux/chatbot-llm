@@ -10,18 +10,18 @@ from ai_chat_api.models.stock_model import StockData
 db_bp = Blueprint('db', __name__)
 
 CSV_PATH = os.path.join(os.path.dirname(os.path.abspath(
-    __file__)), '..', '..', 'sample_caso_ai_engineer.csv')
+    __file__)), '..', '..', '..', 'sample_caso_ai_engineer.csv')
 
 BOOL_COLUMNS = ['bluetooth', 'car_play']
 
 
-@db_bp.route('/cars', methods=['GET'])
+@db_bp.route('/cars', methods=['POST'])
 def get_cars():
     """
     Returns a list of cars filtering by params
     """
 
-    filters = request.args.to_dict()
+    filters = request.get_json() or {}
     print(f"Received filters: {filters}")
 
     try:

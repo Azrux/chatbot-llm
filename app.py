@@ -1,8 +1,12 @@
+from dotenv import load_dotenv
 from flask import Flask
 from ai_chat_api.config import Config
 from ai_chat_api.routes.ai_routes import ai_bp
-from ai_chat_api.routes.db_routes import db_bp
+from ai_chat_api.routes.db_routes.car import db_bp
 from ai_chat_api.routes.business_routes import business_bp
+from ai_chat_api.routes.twilio_routes import twilio_bp
+
+load_dotenv()
 
 
 def create_app():
@@ -16,6 +20,7 @@ def create_app():
     app.register_blueprint(ai_bp, url_prefix='/api/ai')
     app.register_blueprint(db_bp, url_prefix='/api/db')
     app.register_blueprint(business_bp, url_prefix='/api/business')
+    app.register_blueprint(twilio_bp, url_prefix='/api/twilio')
 
     # Ruta básica de salud del servidor
     @app.route('/health')
