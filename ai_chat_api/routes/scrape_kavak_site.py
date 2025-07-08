@@ -24,7 +24,7 @@ class KavakRAG:
             response.raise_for_status()
             soup = BeautifulSoup(response.text, 'html.parser')
 
-            # Extraer el contenido principal (ajusta según la estructura del sitio)
+            # Extraer el contenido principal
             main_content = soup.find('main') or soup.find('article') or soup
 
             # Limpiar el texto

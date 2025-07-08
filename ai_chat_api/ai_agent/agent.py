@@ -60,7 +60,7 @@ def agent_node(state: AgentState) -> AgentState:
             state.cars_found = car_list
 
             if not car_list:
-                state.agent_reply = "No encontré autos con esos datos."
+                state.agent_reply = "No encontré autos con esos datos. Te interesa algún otro modelo?"
                 break
 
             if len(car_list) == 1:
@@ -81,7 +81,7 @@ def agent_node(state: AgentState) -> AgentState:
                 state.agent_reply = (
                     "Encontré varios autos que coinciden:\n"
                     f"{cars_text}\n"
-                    "¿Cuál te interesa?"
+                    "¿Te interesa alguno?"
                 )
             continue
 
