@@ -18,7 +18,6 @@ def ai_chat():
     state = agent_node(state)
 
     print(f"Respuesta del agente: {state.agent_reply}")
-    print(f"Revisión del supervisor: {state.supervisor_review}")
     print(f"Respuesta final: {state.final_response}")
 
     # guardar el historial de la conversación
@@ -30,6 +29,5 @@ def ai_chat():
     # construir respuesta JSON
     return jsonify({
         "answer": state.agent_reply,
-        "review": state.supervisor_review,
         "final_response": state.final_response
     })

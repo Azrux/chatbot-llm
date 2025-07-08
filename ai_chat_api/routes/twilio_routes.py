@@ -1,9 +1,32 @@
 from dataclasses import asdict
+import os
 from flask import Blueprint, request
 from ai_chat_api.ai_agent.agent import agent_node, AgentState
 from ai_chat_api.routes.db_routes.state import get_state, save_state
+from twilio.rest import Client
+
+account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+
+print(f"Twilio Account SID: {account_sid}")
+print(f"Twilio Auth Token: {auth_token}")
+
+client = Client(account_sid, auth_token)
 
 twilio_bp = Blueprint('twilio', __name__)
+
+
+def send_twilio_message(to, body):
+    """
+    Enviar un mensaje a través de Twilio.
+    """
+    message = client.messages.create(
+        from_='whatsapp:+14155238886',  # Número de WhatsApp de Twilio
+        body=body,
+        to='whatsapp:' + to
+    )
+    print(f"Mensaje enviado: {message.sid}")
+    return message.sid
 
 
 @twilio_bp.route('/webhook', methods=['POST'])  # Twilio usa webhook
@@ -43,10 +66,7 @@ def webhook():
     # Guardar el estado actualizado
     save_state(phone_number, state)
 
-    # Responder a Twilio (formato TwiML)
-    from twilio.twiml.messaging_response import MessagingResponse
+    # Responder a Twilio
+    send_twilio_message(phone_number, state.agent_reply)
 
-    response = MessagingResponse()
-    response.message(state.final_response)
-
-    return str(response)
+    return state.agent_reply

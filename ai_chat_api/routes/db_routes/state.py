@@ -16,7 +16,6 @@ def get_state(phone_number: str) -> Optional[AgentState]:
             state = AgentState(
                 user_msg=data.get("user_msg", ""),
                 agent_reply=data.get("agent_reply"),
-                supervisor_review=data.get("supervisor_review"),
                 final_response=data.get("final_response"),
                 price=data.get("price"),
                 cars_found=data.get("cars_found", []),

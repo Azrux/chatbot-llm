@@ -28,7 +28,7 @@ def get_cars(filters):
         if not cars.get("cars"):
             return {
                 "cars": [],
-                "error": "No encontré autos que coincidan con tu búsqueda."
+                "error": "No se encontraron autos con esos filtros."
             }
 
         return cars
@@ -55,20 +55,7 @@ def get_financing(price: str, years: Optional[int]) -> str:
         resp.raise_for_status()
         financing_options = resp.json()
 
-        if not financing_options:
-            return "No se encontraron opciones de financiación."
-
-        prompt = f"""
-Eres un asesor de ventas de autos. El usuario quiere conocer las opciones de financiación. 
-Estas son las opciones:
-
-{financing_options}
-
-Crea un mensaje breve, en tono amable, explicando las opciones y ofreciendo ayuda para continuar con la compra.
-"""
-
-        completion = llm.invoke(prompt)
-        return str(getattr(completion, "content", completion))
+        return financing_options
 
     except Exception as e:
         return f"Ocurrió un error calculando financiación: {str(e)}"
