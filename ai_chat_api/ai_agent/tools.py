@@ -1,5 +1,5 @@
 import requests
-from typing import Optional
+from typing import Any, Optional
 from langchain_openai import ChatOpenAI
 
 llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.3)
@@ -40,7 +40,7 @@ def get_cars(filters):
         }
 
 
-def get_financing(price: str, years: Optional[int]) -> str:
+def get_financing(price: str, years: Optional[int]) -> Any:
     """
     - Recibe el texto del usuario
     - Llama a /api/business/calculate-financiation

@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
-from ai_chat_api.ai_agent.agent import agent_node, AgentState
+from ai_chat_api.ai_agent import agent_node
+from ai_chat_api.ai_agent.state import AgentState
 
 ai_bp = Blueprint('ai_bp', __name__)
 

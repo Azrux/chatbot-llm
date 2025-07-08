@@ -1,9 +1,13 @@
-from dataclasses import asdict
+"""
+Rutas para manejar la integración con Twilio y WhatsApp.
+"""
 import os
-from flask import Blueprint, request
-from ai_chat_api.ai_agent.agent import agent_node, AgentState
-from ai_chat_api.routes.db_routes.state import get_state, save_state
+from dataclasses import asdict
 from twilio.rest import Client
+from flask import Blueprint, request
+from ai_chat_api.ai_agent.agent_node import agent_node
+from ai_chat_api.ai_agent.state import AgentState
+from ai_chat_api.routes.db_routes.state import get_state, save_state
 
 account_sid = os.getenv('TWILIO_ACCOUNT_SID')
 auth_token = os.getenv('TWILIO_AUTH_TOKEN')
@@ -31,6 +35,9 @@ def send_twilio_message(to, body):
 
 @twilio_bp.route('/webhook', methods=['POST'])  # Twilio usa webhook
 def webhook():
+    """
+    Maneja los mensajes entrantes de Twilio y procesa la conversación.
+    """
     # Twilio envía los datos como form data, no JSON
     user_msg = request.form.get('Body')  # El mensaje del usuario
     print(f"Mensaje recibido: {user_msg}")

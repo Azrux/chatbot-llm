@@ -30,7 +30,7 @@ def classify_user_input(user_msg: str, state) -> dict:
       - model: Modelo del auto (string, ej. "Corolla")
       - stock_id: ID de stock del auto (integer, ej. "123456")
       - price: Precio del auto (float, ej. 384999.0)
-      - years: Años de financiamiento (integer, ej. 5)
+      - year: Años de financiamiento (integer, ej. 5)
       - km: Kilometraje del auto (integer, ej. 50000)
       - width: Ancho del auto (float, ej. 1.8)
       - height: Altura del auto (float, ej. 1.5)
@@ -44,7 +44,7 @@ def classify_user_input(user_msg: str, state) -> dict:
         {{
           "intent": "select_car",
           "parameters": {{
-            "car_id": "225553"
+            "stock_id": "225553"
           }}
         }},
         {{

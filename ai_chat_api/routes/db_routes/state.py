@@ -1,8 +1,7 @@
 import json
 import os
-from dataclasses import asdict
 from typing import Optional
-from ai_chat_api.ai_agent.agent import AgentState
+from ai_chat_api.ai_agent.state import AgentState
 
 
 def get_state(phone_number: str) -> Optional[AgentState]:

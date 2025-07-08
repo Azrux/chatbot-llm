@@ -4,13 +4,13 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chains.retrieval_qa.base import RetrievalQA
-from langchain_openai import ChatOpenAI
 from langchain.schema import Document
+from ai_chat_api.ai_agent.agents import gpt_4
 
 
 class KavakRAG:
     def __init__(self):
-        self.llm = ChatOpenAI(model="gpt-4", temperature=0.3)
+        self.llm = gpt_4
         self.embeddings = OpenAIEmbeddings()
         self.vectorstore = None
         self.qa_chain = None
