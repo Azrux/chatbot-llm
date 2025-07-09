@@ -19,10 +19,10 @@ def handle_no_action(state: AgentState, params: dict) -> AgentState:
         "{state.user_msg}"
 
         INSTRUCCIONES ESTRICTAS:
-        - Si el mensaje NO está relacionado con autos, financiamiento o la empresa, NO respondas la pregunta. SOLO di: "Lo siento, solo puedo ayudarte con temas de autos, financiamiento o información de la empresa."
-        - Si el mensaje es un saludo, responde con un saludo cordial y ofrece tu ayuda para temas de autos, financiamiento o información de la empresa.
+        - Si el mensaje es solo un saludo, responde con un saludo cordial y pregunta cómo puedes ayudar.
         - Si el mensaje es una despedida, despídete cordialmente.
           - Si en el historial de conversación ya hubo una despedida, NO respondas.
+        - Si el mensaje no es un saludo o despedida y NO está relacionado con autos, financiamiento o la empresa, NO respondas la pregunta. SOLO di: "Lo siento, solo puedo ayudarte con temas de autos, financiamiento o información de la empresa."
 
         NO respondas preguntas fuera de tu dominio. NO intentes ser útil fuera de los temas indicados. NO expliques, NO resuelvas, NO des información adicional.
 

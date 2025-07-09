@@ -24,8 +24,6 @@ def get_makes():
             marcas_unicas = sorted(marcas_unicas)
 
             print(f"Total de marcas únicas encontradas: {len(marcas_unicas)}")
-            print("\nMarcas disponibles:")
-            print("-" * 30)
 
             for i, marca in enumerate(marcas_unicas, 1):
                 print(f"{i:2d}. {marca}")
@@ -34,7 +32,6 @@ def get_makes():
 
         else:
             print("Error: No se encontró la columna 'make' en el archivo CSV")
-            print("Columnas disponibles:", list(df.columns))
             return []
 
     except FileNotFoundError:
@@ -64,8 +61,6 @@ def get_models():
 
             print(
                 f"Total de modelos únicos encontrados: {len(modelos_unicos)}")
-            print("\nModelos disponibles:")
-            print("-" * 30)
 
             for i, modelo in enumerate(modelos_unicos, 1):
                 print(f"{i:2d}. {modelo}")
@@ -74,7 +69,6 @@ def get_models():
 
         else:
             print("Error: No se encontró la columna 'model' en el archivo CSV")
-            print("Columnas disponibles:", list(df.columns))
             return []
 
     except FileNotFoundError:
