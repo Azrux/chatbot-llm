@@ -12,9 +12,6 @@ from ai_chat_api.routes.db_routes.state import get_state, save_state
 account_sid = os.getenv('TWILIO_ACCOUNT_SID')
 auth_token = os.getenv('TWILIO_AUTH_TOKEN')
 
-print(f"Twilio Account SID: {account_sid}")
-print(f"Twilio Auth Token: {auth_token}")
-
 client = Client(account_sid, auth_token)
 
 twilio_bp = Blueprint('twilio', __name__)
@@ -61,8 +58,6 @@ def webhook():
 
     # Correr el agente
     state = agent_node(state)
-
-    print(asdict(state))
 
     # Actualizar el historial de conversación
     state.conversation_history.append({
