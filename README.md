@@ -1,4 +1,4 @@
-# Chatbot de Autos para WhatsApp (Twilio + OpenAI)
+# Chatbot Agente de Autos para WhatsApp (Twilio + OpenAI)
 
 Este proyecto es un chatbot de atención para concesionaria de autos, integrado con WhatsApp vía Twilio y usando modelos de OpenAI para procesamiento de lenguaje natural.
 

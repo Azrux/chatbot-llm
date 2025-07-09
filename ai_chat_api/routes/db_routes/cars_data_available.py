@@ -23,11 +23,6 @@ def get_makes():
             # Ordenar alfabéticamente
             marcas_unicas = sorted(marcas_unicas)
 
-            print(f"Total de marcas únicas encontradas: {len(marcas_unicas)}")
-
-            for i, marca in enumerate(marcas_unicas, 1):
-                print(f"{i:2d}. {marca}")
-
             return marcas_unicas
 
         else:
@@ -58,12 +53,6 @@ def get_models():
 
             # Ordenar alfabéticamente
             modelos_unicos = sorted(modelos_unicos)
-
-            print(
-                f"Total de modelos únicos encontrados: {len(modelos_unicos)}")
-
-            for i, modelo in enumerate(modelos_unicos, 1):
-                print(f"{i:2d}. {modelo}")
 
             return modelos_unicos
 
